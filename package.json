@@ -1,0 +1,42 @@
+{
+  "name": "@thailand/openclaw",
+  "version": "0.1.0",
+  "description": "Thai-localized OpenClaw distribution with easy Thai-language onboarding, LINE integration, and น้องกุ้ง personality presets — making AI agents accessible for Thai users.",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "nongkung": "./bin/nongkung.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "openclaw",
+    "thai",
+    "ai-agent",
+    "nongkung",
+    "น้องกุ้ง",
+    "line",
+    "chatbot"
+  ],
+  "author": "Poramate Minsiri <poramate@minsiri.com>",
+  "license": "MIT",
+  "dependencies": {
+    "openclaw": "^1.0.0",
+    "inquirer": "^9.2.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.0",
+    "fs-extra": "^11.1.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thailand/nongkung-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thailand/nongkung-cli/issues"
+  },
+  "homepage": "https://nongkung.club"
+}
