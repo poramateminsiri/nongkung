@@ -76,7 +76,8 @@ function getProviderFromModel(model) {
   if (model.startsWith('openrouter/')) return 'openrouter';
   if (model.startsWith('openai/')) return 'openai';
   if (model.includes('anthropic') || model.includes('claude')) return 'anthropic';
-  return 'openrouter'; // default to openrouter for flexibility
+  // Fail-closed: throw error for unrecognized models instead of silent default
+  throw new Error(`Unrecognized model provider for: ${model}. Expected prefix: openrouter/, openai/, or containing anthropic/claude`);
 }
 
 export async function writeOpenClawConfig(config) {
