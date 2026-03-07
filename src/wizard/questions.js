@@ -25,7 +25,9 @@ const questions = [
     choices: [
       { name: 'Claude Sonnet - คุณภาพดี', value: 'openrouter/anthropic/claude-sonnet-4' },
       { name: 'GPT-4o - เร็ว', value: 'openai/gpt-4o' },
-      { name: 'GPT-4o Mini - ประหยัด', value: 'openai/gpt-4o-mini' }
+      { name: 'GPT-4o Mini - ประหยัด', value: 'openai/gpt-4o-mini' },
+      { name: 'Step 3.5 Flash - ฟรี, ภาษาไทยดีเยี่ยม', value: 'openrouter/stepfun-ai/step-3.5-flash-lite:free' },
+      { name: 'Gemma 3 27B - ฟรี, เก่งรอบด้าน', value: 'openrouter/google/gemma-3-27b-it:free' }
     ]
   },
   {
@@ -42,7 +44,7 @@ const questions = [
   {
     type: 'input',
     name: 'apiKey',
-    message: 'ใส่ API Key (Anthropic/OpenAI):',
+    message: 'ใส่ API Key (Anthropic/OpenAI/OpenRouter):',
     validate: (input) => input.length > 0 || 'กรุณาใส่ API Key'
   },
   // WhatsApp-specific questions

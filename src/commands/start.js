@@ -71,12 +71,24 @@ async function start() {
   console.log(chalk.gray('สำหรับคำสั่งเพิ่มเติม: nongkung --help\n'));
 }
 
+// Determine provider from model string
+function getProviderFromModel(model) {
+  if (model.startsWith('openrouter/')) return 'openrouter';
+  if (model.startsWith('openai/')) return 'openai';
+  if (model.includes('anthropic') || model.includes('claude')) return 'anthropic';
+  // Fail-closed: throw error for unrecognized models instead of silent default
+  throw new Error(`Unrecognized model provider for: ${model}. Expected prefix: openrouter/, openai/, or containing anthropic/claude`);
+}
+
 export async function writeOpenClawConfig(config) {
   const configDir = path.join(os.homedir(), '.openclaw');
   const configPath = path.join(configDir, 'openclaw.json');
-  
+
   await fs.ensureDir(configDir);
-  
+
+  // Determine provider and set up API keys
+  const provider = getProviderFromModel(config.model);
+
   const openclawConfig = {
     agents: {
       defaults: {
@@ -100,10 +112,17 @@ export async function writeOpenClawConfig(config) {
         '@thailand/line-channel': { enabled: config.channel === 'line' }
       }
     },
+    apiKeys: {
+      // Store API key based on provider
+      openrouter: provider === 'openrouter' ? config.apiKey : undefined,
+      openai: provider === 'openai' ? config.apiKey : undefined,
+      anthropic: provider === 'anthropic' ? config.apiKey : undefined
+    },
     nongkung: {
       version: '0.1.0',
       installedAt: new Date().toISOString(),
-      channel: config.channel
+      channel: config.channel,
+      provider: provider
     }
   };
   
