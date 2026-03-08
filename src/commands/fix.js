@@ -53,7 +53,7 @@ async function fix() {
     try {
       execSync('openclaw gateway restart', { stdio: 'ignore' });
       spinner.succeed('รีสตาร์ทเสร็จแล้ว');
-    } catch (error) {
+    } catch {
       spinner.fail('รีสตาร์ทไม่สำเร็จ');
     }
   } else if (action === 'path') {

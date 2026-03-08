@@ -59,7 +59,7 @@ async function start() {
   try {
     execSync('openclaw gateway start', { stdio: 'ignore' });
     spinner4.succeed('Gateway ทำงานแล้ว');
-  } catch (error) {
+  } catch {
     spinner4.warn('ไม่สามารถเริ่ม Gateway อัตโนมัติได้');
     console.log(chalk.yellow('💡 รันด้วยตนเอง: openclaw gateway start'));
   }
