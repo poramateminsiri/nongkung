@@ -11,7 +11,7 @@ async function update() {
   try {
     execSync('npm update -g @thailand/openclaw', { stdio: 'ignore' });
     spinner1.succeed('อัปเดต nongkung เสร็จแล้ว');
-  } catch (error) {
+  } catch {
     spinner1.warn('ไม่สามารถอัปเดต nongkung ได้');
   }
   
@@ -20,7 +20,7 @@ async function update() {
   try {
     execSync('npm update -g openclaw', { stdio: 'ignore' });
     spinner2.succeed('อัปเดต OpenClaw เสร็จแล้ว');
-  } catch (error) {
+  } catch {
     spinner2.fail('อัปเดต OpenClaw ไม่สำเร็จ');
     console.log(chalk.yellow('💡 ลองรันด้วยตนเอง: npm update -g openclaw'));
   }
@@ -31,7 +31,7 @@ async function update() {
     const workspace = `${process.env.HOME}/.openclaw/workspace`;
     await copyThaiTemplates(workspace);
     spinner3.succeed('อัปเดต Thai templates เสร็จแล้ว');
-  } catch (error) {
+  } catch {
     spinner3.warn('ไม่สามารถอัปเดต templates ได้');
   }
   
